@@ -21,4 +21,10 @@ class NoticiasController extends Controller
     	$noticias = noticias::all()->sortByDesc('id_noticias')->slice(3,3);
     	return NoticiasResource::collection($noticias);
     }
+
+    public function pegarNoticiaIndividual($id){
+    	$noticias = noticias::all()->where('id_noticias', $id);
+
+    	return NoticiasResource::collection($noticias);
+    }
 }

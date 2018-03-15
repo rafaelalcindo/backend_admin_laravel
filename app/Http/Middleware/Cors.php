@@ -19,7 +19,8 @@ class Cors
             return response('', 200)
                 ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE')
                 ->header('Access-Control-Allow-Headers', 'accept, content-type, 
-                x-xsrf-token, x-csrf-token');
+                x-xsrf-token, x-csrf-token')
+                ->header('Access-Control-Allow-Origin','*');
         }
 
         return $next($request);

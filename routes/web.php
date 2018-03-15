@@ -23,3 +23,5 @@ Route::get('/primeirasNoticias', 'NoticiasController@index');
 
 Route::get('/primeirasNoticiasSecound', 'NoticiasController@pegarPrimeirasNoticias');
 
+Route::get('/noticiaindividual/{id}', 'NoticiasController@pegarNoticiaIndividual');
+
