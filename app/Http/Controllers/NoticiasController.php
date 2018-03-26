@@ -27,4 +27,10 @@ class NoticiasController extends Controller
 
     	return NoticiasResource::collection($noticias);
     }
+
+    public function pegarNoticiaGeral(){
+        $noticias = noticias::paginate(5);
+
+        return NoticiasResource::collection($noticias);
+    }
 }
