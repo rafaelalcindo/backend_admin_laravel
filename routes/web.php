@@ -15,6 +15,8 @@
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Credentials: true');
 
+Route::post('/logarUsuario', 'Usuario@logarUsuario')->middleware('cors');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -26,3 +28,11 @@ Route::get('/primeirasNoticiasSecound', 'NoticiasController@pegarPrimeirasNotici
 Route::get('/noticiaindividual/{id}', 'NoticiasController@pegarNoticiaIndividual');
 
 Route::get('/noticiageral', 'NoticiasController@pegarNoticiaGeral');
+
+
+// ========================== Usuários ======================================
+//					Logar e Serviços com Usuário
+//===========================================================================
+
+//Route::post('/logarUsuario', 'Usuario@logarUsuario');
+
