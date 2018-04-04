@@ -16,7 +16,7 @@ class Usuario extends Controller
     	if($usuario != ''){
     		return $usuario;
     	}else{
-    		return "{'logar': 'false'}";
+    		return '{"logar": 0}';
     	}
     	
     }
