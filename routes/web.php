@@ -27,10 +27,12 @@ Route::get('/', function () {
 Route::get('/primeirasNoticias', 'NoticiasController@index')->middleware('cors');
 
 Route::get('/primeirasNoticiasSecound', 'NoticiasController@pegarPrimeirasNoticias')->middleware('cors');
-
 Route::get('/noticiaindividual/{id}', 'NoticiasController@pegarNoticiaIndividual')->middleware('cors');
-
 Route::get('/noticiageral', 'NoticiasController@pegarNoticiaGeral')->middleware('cors');
+
+// =============================== Lista Orcamento ===========================
+
+Route::post('/orcamento/inserirOrcamento', 'ListaOrcamentoController@InserirOrcamento')->middleware('cors');
 
 
 // ========================== Usuários ======================================
