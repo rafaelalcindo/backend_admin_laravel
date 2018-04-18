@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\ListaOrcamento;
 use Carbon\Carbon;
 
+
 class ListaOrcamentoController extends Controller
 {
     public function InserirOrcamento(Request $Request){
@@ -28,4 +29,14 @@ class ListaOrcamentoController extends Controller
     	}
 
     }
+
+
+    public function ListarOrcamentoTela() {
+
+    	$orcamentoLista = new ListaOrcamento();
+    	$orcamentoTela = $orcamentoLista->listarOrcamentoTela();
+    	return $orcamentoTela;
+    }
+
+    
 }

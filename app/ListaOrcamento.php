@@ -3,6 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+use App\BuildQuery\BuildQueryOrcamento;
+
 
 class ListaOrcamento extends Model
 {
@@ -19,5 +22,11 @@ class ListaOrcamento extends Model
     	'orcLista_observacao',
     	'orcLista_data_prechimento'    	
     ];
+
+    public function listarOrcamentoTela() {
+        $queryTela =  BuildQueryOrcamento::QueryTelaOrcamento();
+        $resultado = DB::select($queryTela);
+        return $resultado;
+    }
     
 }
