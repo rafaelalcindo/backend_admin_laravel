@@ -18,6 +18,7 @@ class ListaOrcamentoController extends Controller
     	$orcamento['orcLista_contato']  		= $Request->input('contato');
     	$orcamento['orcLista_telefone'] 		= $Request->input('telefone');
     	$orcamento['orcLista_observacao'] 		= $Request->input('observacao');
+        $orcamento['orcLista_entregue']         = $Request->input('entregue');
     	//$orcamento['orcLista_data_prechimento'] = Carbon::now()->toDateTimeString();
 
     	$orcamentoBanco = ListaOrcamento::create($orcamento);

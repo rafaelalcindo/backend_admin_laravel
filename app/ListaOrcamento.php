@@ -20,7 +20,8 @@ class ListaOrcamento extends Model
     	'orcLista_horario',
     	'orcLista_telefone',
     	'orcLista_observacao',
-    	'orcLista_data_prechimento'    	
+    	'orcLista_data_prechimento',
+        'orcLista_entregue'
     ];
 
     public function listarOrcamentoTela() {
