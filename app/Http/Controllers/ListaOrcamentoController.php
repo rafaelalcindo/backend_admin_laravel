@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ListaOrcamento;
 use Carbon\Carbon;
+use App\Http\Resources\ListaOrcamento as ListaOrcamentoResource;
 
 
 class ListaOrcamentoController extends Controller
@@ -37,6 +38,13 @@ class ListaOrcamentoController extends Controller
     	$orcamentoLista = new ListaOrcamento();
     	$orcamentoTela = $orcamentoLista->listarOrcamentoTela();
     	return $orcamentoTela;
+    }
+
+    // ============= Listagem para indicar qual deve ser ligado ==================
+
+    public function ListarOrcamentoParaLigar() { 
+        $orcamentoListagem = ListaOrcamento::orderBy('orcLista_data','asc')->paginate(10);
+        return ListaOrcamentoResource::collection($orcamentoListagem);
     }
 
     

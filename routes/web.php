@@ -34,6 +34,7 @@ Route::get('/noticiageral', 'NoticiasController@pegarNoticiaGeral')->middleware(
 
 Route::post('/orcamento/inserirOrcamento', 'ListaOrcamentoController@InserirOrcamento')->middleware('cors');
 Route::get('/orcamento/listarOrcamentoTela', 'ListaOrcamentoController@ListarOrcamentoTela')->middleware('cors');
+Route::get('/orcamento/listarOrcamentoParaLigar', 'ListaOrcamentoController@ListarOrcamentoParaLigar')->middleware('cors');
 
 
 // ========================== Usuários ======================================

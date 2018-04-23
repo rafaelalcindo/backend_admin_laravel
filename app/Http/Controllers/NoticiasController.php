@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\noticias;
 use App\Http\Resources\noticias as NoticiasResource;
+use App\Http\Resources\ListaOrcamento as ListaOrcamentoResource;
 
 class NoticiasController extends Controller
 {
