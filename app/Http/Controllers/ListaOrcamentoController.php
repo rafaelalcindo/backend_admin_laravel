@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\ListaOrcamento;
 use Carbon\Carbon;
 use App\Http\Resources\ListaOrcamento as ListaOrcamentoResource;
+use App\Http\Resources\Usuario as UsuarioResource;
+
+use App\Usuario as Usuario_Auth;
 
 
 class ListaOrcamentoController extends Controller
@@ -45,6 +48,11 @@ class ListaOrcamentoController extends Controller
     public function ListarOrcamentoParaLigar() { 
         $orcamentoListagem = ListaOrcamento::orderBy('orcLista_data','asc')->paginate(10);
         return ListaOrcamentoResource::collection($orcamentoListagem);
+    }
+
+    public function ListarFuncionarioOrcamento() {
+        $ListaFuncOrcamento = Usuario_Auth::all()->where('usuario_dep','orcamento');
+        return UsuarioResource::collection($ListaFuncOrcamento);
     }
 
     
