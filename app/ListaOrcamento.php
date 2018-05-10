@@ -21,7 +21,12 @@ class ListaOrcamento extends Model
     	'orcLista_telefone',
     	'orcLista_observacao',
     	'orcLista_data_prechimento',
-        'orcLista_entregue'
+        'orcLista_entregue',
+        'orcLista_responsavel',
+        'orcLista_vistoria',
+        'orcLista_resposavel_vistoria',
+        'orcLista_meio_entrega',
+        'orcLista_data_vistoria'
     ];
 
     public function listarOrcamentoTela() {

@@ -14,6 +14,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         //
     	'/logarUsuario',
-    	'/orcamento/inserirOrcamento'
+    	'/orcamento/inserirOrcamento',
+        '/orcamento/ligarOrcamento'
     ];
 }

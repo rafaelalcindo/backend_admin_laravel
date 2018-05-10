@@ -21,7 +21,7 @@ class ListaOrcamento extends Resource
             'data' => $this->orcLista_data,
             'hora' => $this->orcLista_horario,
             'telefone' => $this->orcLista_telefone,
-            'responsavel' => $this->orcLista_reponsavel
+            'responsavel' => $this->orcLista_responsavel
         ];
     }
 }

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ListaOrcamento;
+use App\ListaOrcamentoHasUsuario as OrcamentoHasUsuario;
 use Carbon\Carbon;
+
 use App\Http\Resources\ListaOrcamento as ListaOrcamentoResource;
 use App\Http\Resources\Usuario as UsuarioResource;
 
@@ -53,6 +55,40 @@ class ListaOrcamentoController extends Controller
     public function ListarFuncionarioOrcamento() {
         $ListaFuncOrcamento = Usuario_Auth::all()->where('usuario_dep','orcamento');
         return UsuarioResource::collection($ListaFuncOrcamento);
+    }
+
+    public function ListarFuncionarioEngenharia() {
+        $ListaFuncEngenharia = Usuario_Auth::all()->where('usuario_dep','engenharia');
+        return UsuarioResource::collection($ListaFuncEngenharia);
+    }
+
+    public function LigarOcamento(Request $Request) {
+        $orcamentoResto = array();
+        $orcamentoResto['orcLista_vistoria']             = $Request->input('vistoria');
+        $orcamentoResto['orcLista_responsavel']          = $Request->input('responsavel');
+        $orcamentoResto['orcLista_resposavel_vistoria']  = $Request->input('responsavel_vistoria');
+        $orcamentoResto['orcLista_meio_entrega']         = $Request->input('meio_entrega');
+        $orcamentoResto['orcLista_data_vistoria']        = $Request->input('data_vistoria');
+        $idOrcamento                                     = $Request->input('id_orcamento');
+        $idUsuario                                       = $Request->input('id_usuario');
+
+        $ligarOrcamento = array();
+        $ligarOrcamento['idorcamento_lista'] = $idOrcamento;
+        $ligarOrcamento['usuario_id']        = $idUsuario;
+
+        $ligandoOrcamento = OrcamentoHasUsuario::create($ligarOrcamento);
+
+        if($ligandoOrcamento){
+            //atualizando Lista Orcamento
+            $UpdateOrcamentoLista = ListaOrcamento::where('idorcamento_lista', $idOrcamento)->update($orcamentoResto);
+            if($UpdateOrcamentoLista){
+                return '[{"resultado": "1" }]';
+            } else {
+                return '[{"resultado": "0" }]';
+            }
+            //return $UpdateOrcamentoLista;
+        } else { return '[{"resultado": "0" }]'; }
+
     }
 
     
