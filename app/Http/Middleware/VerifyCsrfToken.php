@@ -15,6 +15,7 @@ class VerifyCsrfToken extends Middleware
         //
     	'/logarUsuario',
     	'/orcamento/inserirOrcamento',
-        '/orcamento/ligarOrcamento'
+        '/orcamento/ligarOrcamento',
+        '/orcamento/atualizarLigacaoOrcamento'
     ];
 }

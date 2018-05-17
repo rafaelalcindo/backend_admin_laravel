@@ -38,6 +38,8 @@ Route::get('/orcamento/listarOrcamentoParaLigar', 'ListaOrcamentoController@List
 Route::get('/orcamento/listaFuncionarioOrcamento', 'ListaOrcamentoController@ListarFuncionarioOrcamento')->middleware('cors');
 Route::get('/orcamento/listaFuncionarioEngenharia', 'ListaOrcamentoController@ListarFuncionarioEngenharia')->middleware('cors');
 Route::post('/orcamento/ligarOrcamento', 'ListaOrcamentoController@LigarOcamento')->middleware('cors');
+Route::get('/orcamento/pegarOrcamentoIndividual/{id}', 'ListaOrcamentoController@getOrcamentoForUpdate')->middleware('cors');
+Route::post('/orcamento/atualizarLigacaoOrcamento', 'ListaOrcamentoController@AtualizarOrcamento')->middleware('cors');
 
 
 // ========================== Usuários ======================================

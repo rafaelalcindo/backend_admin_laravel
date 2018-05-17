@@ -91,5 +91,37 @@ class ListaOrcamentoController extends Controller
 
     }
 
+    public function getOrcamentoForUpdate($id) {
+        $idOrcamento = $id;
+        $orcamentoIndividual = ListaOrcamento::all()->where('idorcamento_lista', $idOrcamento);
+        return ListaOrcamentoResource::collection($orcamentoIndividual);
+    }
+
+    public function AtualizarOrcamento(Request $Request) {
+        $orcamenotUpdate = array();
+        $orcamenotUpdate['orcLista_vistoria']            = $Request->input('vistoria');
+        $orcamenotUpdate['orcLista_responsavel']         = $Request->input('responsavel');
+        $orcamenotUpdate['orcLista_resposavel_vistoria'] = $Request->input('responsavel_vistoria');
+        $orcamenotUpdate['orcLista_meio_entrega']        = $Request->input('meio_entrega');
+        $orcamenotUpdate['orcLista_data_vistoria']       = $Request->input('data_vistoria');
+        $idOrcamento                                     = $Request->input('id_orcamento');
+        $idUsuario                                       = $Request->input('id_usuario');
+
+        $ligarOrcamentoUpdate = array();
+        $ligarOrcamentoUpdate['idorcamento_lista'] = $idOrcamento;
+        $ligarOrcamentoUpdate['usuario_id']        = $idUsuario;
+
+        $ligandoOrcamentoUpdate = OrcamentoHasUsuario::where('idorcamento_lista',$idOrcamento)->update($ligarOrcamentoUpdate);
+
+        if($ligandoOrcamentoUpdate) {
+            $UpdateOrcamentoLista = ListaOrcamento::where('idorcamento_lista', $idOrcamento)->update($orcamenotUpdate);
+            if($UpdateOrcamentoLista){
+                return '[{ "resultado": "1" }]';
+            } else {
+                return '[{"resultado": "0" }]';
+            }
+        } else { return '[{ "resultado": "0" }]'; }
+    }
+
     
 }
